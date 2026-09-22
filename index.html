@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#111111">
+
+    <title>TrackVerse - Game Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            TRACK<span>VERSE</span>
+        </div>
+
+        <div class="header-actions">
+
+            <button class="search-button" id="searchButton">
+                🔍
+            </button>
+
+            <button class="add-button" id="addGameButton">
+                + Add Game
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <section class="search-area" id="searchArea">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search games..."
+            autocomplete="off"
+        >
+
+    </section>
+
+
+    <!-- ================= FILTERS ================= -->
+
+    <nav class="filters">
+
+        <button class="filter active" data-filter="all">
+            ALL
+        </button>
+
+        <button class="filter" data-filter="completed">
+            COMPLETED
+        </button>
+
+        <button class="filter" data-filter="playing">
+            PLAYING
+        </button>
+
+        <button class="filter" data-filter="backlog">
+            BACKLOG
+        </button>
+
+    </nav>
+
+
+    <!-- ================= GAME GRID ================= -->
+
+    <main>
+
+        <div class="game-grid" id="gameGrid">
+
+            <!-- JavaScript creates game cards here -->
+
+        </div>
+
+        <div class="empty-state" id="emptyState">
+
+            <div class="empty-icon">
+                🎮
+            </div>
+
+            <h2>No Games Found</h2>
+
+            <p>
+                Add a game or change your search.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= GAME DETAILS MODAL ================= -->
+
+    <div class="modal" id="detailsModal">
+
+        <div class="modal-content details-content">
+
+            <button class="close-button" id="closeDetails">
+                ×
+            </button>
+
+            <img
+                id="detailsPoster"
+                class="details-poster"
+                src=""
+                alt=""
+            >
+
+            <div class="details-info">
+
+                <h1 id="detailsTitle">
+                    Game Title
+                </h1>
+
+                <div class="details-rating" id="detailsRating">
+                    ★ 0.0
+                </div>
+
+                <div class="detail-row">
+
+                    <span>Playtime</span>
+
+                    <strong id="detailsPlaytime">
+                        0h 0m
+                    </strong>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <span>Completion</span>
+
+                    <strong id="detailsCompletion">
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <span>Platform</span>
+
+                    <strong id="detailsPlatform">
+                        -
+                    </strong>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <span>Status</span>
+
+                    <strong id="detailsStatus">
+                        -
+                    </strong>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <span>Genre</span>
+
+                    <strong id="detailsGenre">
+                        -
+                    </strong>
+
+                </div>
+
+                <div class="details-notes">
+
+                    <h3>Notes</h3>
+
+                    <p id="detailsNotes">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ADD GAME MODAL ================= -->
+
+    <div class="modal" id="addModal">
+
+        <div class="modal-content">
+
+            <button class="close-button" id="closeAdd">
+                ×
+            </button>
+
+            <h2>
+                Add Game
+            </h2>
+
+            <form id="gameForm">
+
+                <label>
+                    Game Title
+                </label>
+
+                <input
+                    type="text"
+                    id="gameTitle"
+                    placeholder="Elden Ring"
+                    required
+                >
+
+
+                <label>
+                    Poster Path
+                </label>
+
+                <input
+                    type="text"
+                    id="gamePoster"
+                    placeholder="Assets/Games/elden-ring.jpg"
+                    required
+                >
+
+                <small>
+                    Use the path of the image inside your GitHub project.
+                </small>
+
+
+                <div class="two-inputs">
+
+                    <div>
+
+                        <label>
+                            Rating
+                        </label>
+
+                        <input
+                            type="number"
+                            id="gameRating"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            placeholder="4.8"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Completion %
+                        </label>
+
+                        <input
+                            type="number"
+                            id="gameCompletion"
+                            min="0"
+                            max="100"
+                            placeholder="100"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="two-inputs">
+
+                    <div>
+
+                        <label>
+                            Hours
+                        </label>
+
+                        <input
+                            type="number"
+                            id="gameHours"
+                            min="0"
+                            placeholder="147"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Minutes
+                        </label>
+
+                        <input
+                            type="number"
+                            id="gameMinutes"
+                            min="0"
+                            max="59"
+                            placeholder="32"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="gamePlatform">
+
+                    <option>PC</option>
+                    <option>PS5</option>
+                    <option>PS4</option>
+                    <option>Xbox Series X/S</option>
+                    <option>Xbox One</option>
+                    <option>Switch</option>
+
+                </select>
+
+
+                <label>
+                    Status
+                </label>
+
+                <select id="gameStatus">
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                    <option value="playing">
+                        Playing
+                    </option>
+
+                    <option value="backlog">
+                        Backlog
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Genre
+                </label>
+
+                <input
+                    type="text"
+                    id="gameGenre"
+                    placeholder="Action RPG"
+                >
+
+
+                <label>
+                    Notes
+                </label>
+
+                <textarea
+                    id="gameNotes"
+                    placeholder="Your thoughts about the game..."
+                ></textarea>
+
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    SAVE GAME
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BOTTOM NAV ================= -->
+
+    <nav class="bottom-nav">
+
+        <button class="bottom-item active">
+            <span>⌂</span>
+            HOME
+        </button>
+
+        <button class="bottom-item" id="statsButton">
+            <span>◈</span>
+            STATS
+        </button>
+
+        <button class="bottom-item">
+            <span>⚙</span>
+            SETTINGS
+        </button>
+
+    </nav>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

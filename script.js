@@ -15,7 +15,7 @@ let games = [
 {
     id: 5,
     title: "Hellblade: Senua's Sacrifice",
-    poster: "https://yuvaraj019.github.io/Showly/Assets/Games/hellblade-senuas-sacrifice.jpg",
+    poster: "Assets/Games/hellblade-senuas-sacrifice.jpg",
     rating: 4.5,
     hours: 8,
     minutes: 30,
@@ -29,7 +29,7 @@ let games = [
 {
     id: 6,
     title: "Senua's Saga: Hellblade II",
-    poster: "https://yuvaraj019.github.io/Showly/Assets/Games/senuas-saga-hellblade-2.jpg",
+    poster: "Assets/Games/senuas-saga-hellblade-2.jpg",
     rating: 4.5,
     hours: 7,
     minutes: 45,
